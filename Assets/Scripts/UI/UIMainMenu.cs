@@ -14,16 +14,15 @@ public class UIMainMenu : MonoBehaviour
     {
         if (nameText != null)
         {
-            nameText.text = "Name: " + character.characterName;
+            nameText.text = $"Name: {character.characterName}"; 
         }
         if (levelText != null)
         {
-            levelText.text = "Level: " + character.level.ToString();
+            levelText.text = $"Level: {character.level.ToString()}"; 
         }
         if (goldText!= null)
         {
-            levelText.text = character.gold.ToString();
+            goldText.text = character.gold.ToString();
         }
-
     }
 }

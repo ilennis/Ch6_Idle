@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // 여기 위에는 상태에 따라 ON/OFF를 위해 추가
     public GameObject mainUI;
     public GameObject statusUI;
     public GameObject inventoryUI;
 
-
+    // UI 내용 직접 관리
     [SerializeField] private UIMainMenu mainMenu;
     [SerializeField] private UIStatus statusMenu;
     [SerializeField] private UIInventory inventoryMenu;
@@ -50,10 +51,12 @@ public class UIManager : MonoBehaviour
         statusUI.SetActive(currentState == UIState.Status);
         inventoryUI.SetActive(currentState == UIState.Inventory);
     }
-
-    private void UpdateText()
+  
+    public void UpdateCharacterUI(Character character)
     {
-        
+        mainMenu.UpdateCharacterUI(character);
+        statusMenu.UpdateStatusUI(character);
+        inventoryMenu.InitInventoryUI();
     }
 }
 

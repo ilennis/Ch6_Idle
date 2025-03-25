@@ -15,19 +15,19 @@ public class UIStatus : MonoBehaviour
        
         if (_attackText != null)
         {
-            _attackText.text = "Name: " + character.characterName;
+            _attackText.text = $"{character.attack.ToString()}"; 
         }
         if (_defenseText != null)
         {
-            _defenseText.text = "Level: " + character.level.ToString();
+            _defenseText.text = $"{character.defense.ToString()}";
         }
         if (_healthText != null)
         {
-            _healthText.text = "Name: " + character.characterName;
+            _healthText.text = $"{character.health.ToString()}";
         }
         if (_critText != null)
         {
-            _critText.text = "Level: " + character.level.ToString();
+            _critText.text = $"{character.critrate.ToString()}";
         }
     }
 }
