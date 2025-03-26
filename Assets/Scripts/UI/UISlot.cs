@@ -7,7 +7,7 @@ public class UISlot : MonoBehaviour
 {
     public Image itemIcon;
     public GameObject equipIcon;
-    private ItemData itemData;
+    public ItemData itemData;
     private UIInventory inventory;
     private Button button;
 
@@ -23,8 +23,6 @@ public class UISlot : MonoBehaviour
         itemIcon.sprite = item.icon;
         equipIcon.SetActive(item.isEquipped);
         RefreshUI();
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(OnSlotClicked);
     }
     private void OnSlotClicked()
     {

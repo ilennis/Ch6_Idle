@@ -9,7 +9,14 @@ public class GameManager : MonoBehaviour
     public Character[] characters;
     public Character player;
     private int _currentCharacterIndex = 0;
-    // Start is called before the first frame update
+
+    public static GameManager _instance { get; private set; }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
     void Start()
     {
         if (player != null)

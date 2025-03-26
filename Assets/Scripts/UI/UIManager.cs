@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
     {
         mainMenu.UpdateCharacterUI(character);
         statusMenu.UpdateStatusUI(character);
-        inventoryMenu.InitInventoryUI();
+        inventoryMenu.InitInventoryUI(character);
     }
 }
 

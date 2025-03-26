@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: "\uD39C"
   icon: {fileID: 21300000, guid: 79d8fbf42ff75634f9001c83303b3133, type: 3}
   isEquipped: 0
-  attack: 0
-  defense: 0
-  health: 0
-  critrate: 0
+  attack: 1
+  defense: 5
+  health: 30
+  critrate: 50

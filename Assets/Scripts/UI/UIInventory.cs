@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    
+    public UIManager manager;
     public Character currentCharacter;
     public GameObject slotPrefab;   
     public Transform inventoryContent;  // Transform의 부모 구조
@@ -17,9 +17,10 @@ public class UIInventory : MonoBehaviour
 
     public void Start()
     {
-        InitInventoryUI();
+        currentCharacter = GameManager._instance.player;
+        InitInventoryUI(currentCharacter);
     }
-    public void InitInventoryUI()
+    public void InitInventoryUI(Character character)
     {
         foreach (GameObject slot in slots)
         {
@@ -28,14 +29,13 @@ public class UIInventory : MonoBehaviour
         slots.Clear();
 
 
-        for (int i = 0; i < currentCharacter.inventory.Count; i++) // for each 로 했는데 인덱스 필요해서 수정
+        foreach (ItemData item in character.inventory)
         {
-            ItemData item = currentCharacter.inventory[i];
             GameObject newSlot = Instantiate(slotPrefab, inventoryContent);
             UISlot uiSlot = newSlot.GetComponent<UISlot>();
-
-            uiSlot.SetItem(item, this); // Pass UI Manager reference for button clicks
-
+            uiSlot.SetItem(item, this); // UI Slot에 아이템 추가
+            Button slotButton = newSlot.GetComponent<Button>();
+            slotButton.onClick.AddListener(() => ToggleEquip(item));
             slots.Add(newSlot);
         }
     }
@@ -47,7 +47,7 @@ public class UIInventory : MonoBehaviour
         else
             currentCharacter.Equip(item);
 
-        InitInventoryUI(); // UI 초기화
+        manager.UpdateCharacterUI(currentCharacter); // UI 초기화
     }
 
 }
