@@ -7,6 +7,8 @@ public class IdleUIManager : MonoBehaviour
 {
     public Slider hpBar;
     public Slider expBar;
+    public Text hpText;
+    public Text expText;
     public Text goldText;
     public Button healButton;
     public Button attack;
@@ -26,10 +28,12 @@ public class IdleUIManager : MonoBehaviour
         levelup.onClick.AddListener(LevelUp);
         
     }
-    void UpdateUI()
+    public void UpdateUI()
     {
         hpBar.value = hp / maxHp;
         expBar.value = exp / maxExp;
+        hpText.text = $"HP: {hp.ToString()} / {maxHp.ToString()}";
+        expText.text = $"HP: {exp.ToString()} / {maxExp.ToString()}";
         goldText.text = "Gold: " + gold;
     }
     void Heal()

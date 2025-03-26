@@ -13,8 +13,16 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject target;
 
+    public float maxHp = 100;
+    public float currentHp;
+    public float attackDamage = 10;
+    public float gold = 0;
+
+    public IdleUIManager manager;
+
     void Start()
     {
+        currentHp = maxHp;
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(StateMachine()); // FSM 구현
     }
@@ -77,6 +85,15 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log(target.name + "를 공격!");
        // 여기다 체력 달게 하는 뭔가 추가
+    }
+    void TakeDamage(float damage)
+    {
+        currentHp -= damage;
+    }
+
+    void UpdateUI()
+    {
+        manager.UpdateUI();
     }
 }
 

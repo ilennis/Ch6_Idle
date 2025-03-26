@@ -13,6 +13,9 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
 
+    public float maxHp = 20;
+    public float currentHp;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
